@@ -101,7 +101,28 @@ uwsgi --http 0.0.0.0:8080 --home env --wsgi-file flask_uwsgi.py --callable app -
 curl http://127.0.0.1:8080
 ```
 
+### 安装最新版本的nginx
+
+#### 安装EPEL
+
+EPEL是Extra Packages for Enterprise Linux的简称。因为在默认的repository里面没有包含最新版本的nginx,安装EPEL后可以确保Centos上的nginx保持的最新版本。
+
+安装EPEL的命令如下：
+
+```
+sudo yum install epel-release
+```
+
+#### 安装nginx
+
+```
+sudo yum install nginx
+```
+
 ## 参考
 
 1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
 2. [Installing Python 2.7.8 on CentOS 6.5](http://bicofino.io/2014/01/16/installing-python-2-dot-7-6-on-centos-6-dot-5/)
+3. [mking/flask-uwsgi](https://github.com/mking/flask-uwsgi)
+4. [How To Deploy Flask Web Applications Using uWSGI Behind Nginx on CentOS 6.4](https://www.digitalocean.com/community/tutorials/how-to-deploy-flask-web-applications-using-uwsgi-behind-nginx-on-centos-6-4)
+5. [使用uwsgi和Nginx部署flask应用](https://segmentfault.com/a/1190000002411626)
