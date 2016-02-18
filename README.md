@@ -1,0 +1,2 @@
+# deploy_flask_centos6
+在centos上部署flask应用的自动化脚本
