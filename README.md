@@ -50,7 +50,31 @@
         ```
         export PATH="/usr/local/bin:$PATH"
         ```
+### 安装pip与virtualenv
 
+1. install setuptools
+
+    ```
+    wget --no-check-certificate https://pypi.python.org/packages/source/s/setuptools/setuptools-1.4.2.tar.gz
+
+    # Extract the files:
+    tar -xvf setuptools-1.4.2.tar.gz
+    cd setuptools-1.4.2
+
+    # Install setuptools using the Python 2.7.8:
+    python2.7 setup.py install
+    ```
+2. install pip
+
+    ```
+    curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python2.7 -
+    ```
+
+3. install virtualenv
+
+    ```
+    pip2.7 install virtualenv
+    ```
 
 ## 参考
 
