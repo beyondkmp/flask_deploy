@@ -119,6 +119,56 @@ sudo yum install epel-release
 sudo yum install nginx
 ```
 
+### 配置nginx与uWSGI
+
+配置nginx,主要是用来反向代理指向uWSGI
+
+在/etc/nginx/conf.d/default.site.conf(不存在就touch此文件)添加下面内容
+
+```
+server
+{
+        listen                  80;
+        server_name             127.0.0.1;
+        root                    /var/www/flask_api;
+
+        location /
+        {
+                include         uwsgi_params;
+                uwsgi_pass      unix:/tmp/uwsgi.sock;
+        }
+}
+```
+
+在/var/www/flask_api下面添加uwsgi_config.ini，添加下面的代码：
+
+```
+[uwsgi]
+
+socket = /tmp/uwsgi.sock
+chmod-socket = 644
+uid = nginx
+gid = nginx
+
+chdir = /var/www/flask_api
+home = /var/www/flask_api/venv
+wsgi-file = /var/www/flask_api/manager.py
+callable = app
+plugins = python
+
+master = true
+vacuum = true
+```
+
+最后启动uwsgi和重启nginx服务,在python虚拟环境下运行
+
+```
+uwsgi /var/www/flask_api/uwsgi_config.ini &
+service nginx restart
+```
+
+### 遇到的问题
+
 ## 参考
 
 1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
