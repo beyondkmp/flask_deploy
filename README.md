@@ -77,6 +77,30 @@
     pip2.7 install virtualenv
     ```
 
+### 安装使用uwsgi
+
+为了统一管理，在python的虚拟环境下安装使用uwsgi,不使用全局的uwsgi
+
+```
+mkdir -p /var/www/flask_api
+cd /var/www/flask_api
+virtualenv env
+source env/bin/activate
+pip install flask uwsgi
+```
+
+接下来可以用uWSGI来跑Flask应用
+
+```
+uwsgi --http 0.0.0.0:8080 --home env --wsgi-file flask_uwsgi.py --callable app --master
+```
+
+测试上面的程序是否成功
+
+```
+curl http://127.0.0.1:8080
+```
+
 ## 参考
 
 1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
