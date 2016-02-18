@@ -50,6 +50,7 @@
         ```
         export PATH="/usr/local/bin:$PATH"
         ```
+
 ### 安装pip与virtualenv
 
 1. install setuptools
