@@ -15,3 +15,7 @@ chmod +x deploy_Flask.sh
 ```
 curl http://127.0.0.1
 ```
+
+## 参考
+
+1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
