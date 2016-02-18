@@ -9,30 +9,30 @@ echo "##########################################################"
 echo
 
 echo
-echo "##################################################################"
-echo "#                                                                #"
-echo "#      Downloading, Compiling and install python on centos6      #"
-echo "#                                                                #"
-echo "##################################################################"
+echo "##########################################################"
+echo "#                                                        #"
+echo "#      Downloading, Compiling and install python2.7      #"
+echo "#                                                        #"
+echo "##########################################################"
 echo
 
-#yum -y update
-#yum groupinstall -y 'development tools'
-#yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget
-#cd /tmp
-#rm -rf Python-2.7.6.tar.xz >/dev/null 2>&1
-#wget http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
-#tar -xvf Python-2.7.8.tar.xz
-#cd Python-2.7.8
-## Start the configuration (setting the installation directory)
-## By default files are installed in /usr/local.
-## You can modify the --prefix to modify it (e.g. for $HOME).
-#./configure --prefix=/usr/local
-#make && make altinstall
-## use python2.7 withou use the default python version
-#export PATH="/usr/local/bin:$PATH"
-## curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-## python get-pip.py
+yum -y update
+yum groupinstall -y 'development tools'
+yum install -y zlib-devel bzip2-devel openssl-devel xz-libs wget
+cd /tmp
+rm -rf Python-2.7.6.tar.xz >/dev/null 2>&1
+wget http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
+tar -xvf Python-2.7.8.tar.xz
+cd Python-2.7.8
+# Start the configuration (setting the installation directory)
+# By default files are installed in /usr/local.
+# You can modify the --prefix to modify it (e.g. for $HOME).
+./configure --prefix=/usr/local
+make && make altinstall
+# use python2.7 withou use the default python version
+export PATH="/usr/local/bin:$PATH"
+# curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+# python get-pip.py
 
 
 echo
@@ -43,6 +43,7 @@ echo "#                                                   #"
 echo "#####################################################"
 echo
 
+yum install epel-release -y
 yum install nginx  python-pip -y
 pip install --upgrade pip
 pip install virtualenv
