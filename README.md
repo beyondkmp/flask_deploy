@@ -194,3 +194,5 @@ service nginx restart
 4. [How To Deploy Flask Web Applications Using uWSGI Behind Nginx on CentOS 6.4](https://www.digitalocean.com/community/tutorials/how-to-deploy-flask-web-applications-using-uwsgi-behind-nginx-on-centos-6-4)
 5. [使用uwsgi和Nginx部署flask应用](https://segmentfault.com/a/1190000002411626)
 6. [阿里云部署 Flask + WSGI + Nginx 详解](http://www.cnblogs.com/Ray-liang/p/4173923.html)
+7. [audit2why](https://screamingadmin.wordpress.com/2012/08/20/audit2why/)
+8. [SELinux policy for nginx and GitLab unix socket in Fedora 19](http://axilleas.me/en/blog/2013/selinux-policy-for-nginx-and-gitlab-unix-socket-in-fedora-19/)
