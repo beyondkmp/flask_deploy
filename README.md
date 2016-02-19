@@ -168,7 +168,24 @@ service nginx restart
 ```
 
 ### 遇到的问题
+1. 关于打开SELINUX时权限问题
 
+    具体的问题从/var/log/nginx/error.log里面可以查到以下错误
+    ```
+    2016/02/17 13:32:39 [crit] 18951#0: *1 connect() to unix:/tmp/uwsgi.sock fai    led (13: Permission denied) while connecting to upstream, client: 127.0.0.1,     server: 127.0.0.1, request: "GET /helloworld HTTP/1.1", upstream: "uwsgi://    unix:/tmp/uwsgi.sock:", host: "127.0.0.1"
+    ```
+
+    解决方法，具体参考[Nginx can't connect to uWSGI socket with correct permissions](http://superuser.com/questions/809527/nginx-cant-connect-to-uwsgi-socket-with-correct-permissionsnx can't connect to uWSGI socket with correct permissions)
+
+    先安装audit2allow,`yum install policycoreutils-python`
+
+    再添加以下规则：
+
+    ```
+    grep nginx /var/log/audit/audit.log | audit2allow -m nginx
+    grep nginx /var/log/audit/audit.log | audit2allow -M nginx
+    semodule -i nginx.pp
+    ```
 ## 参考
 
 1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
@@ -176,3 +193,4 @@ service nginx restart
 3. [mking/flask-uwsgi](https://github.com/mking/flask-uwsgi)
 4. [How To Deploy Flask Web Applications Using uWSGI Behind Nginx on CentOS 6.4](https://www.digitalocean.com/community/tutorials/how-to-deploy-flask-web-applications-using-uwsgi-behind-nginx-on-centos-6-4)
 5. [使用uwsgi和Nginx部署flask应用](https://segmentfault.com/a/1190000002411626)
+6. [阿里云部署 Flask + WSGI + Nginx 详解](http://www.cnblogs.com/Ray-liang/p/4173923.html)
