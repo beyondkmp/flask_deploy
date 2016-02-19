@@ -186,6 +186,7 @@ service nginx restart
     grep nginx /var/log/audit/audit.log | audit2allow -M nginx
     semodule -i nginx.pp
     ```
+
 ## 参考
 
 1. [发一个 Fedora23 上自动搭建、配置 Flask 的 shell 脚本](https://www.v2ex.com/t/254879)
