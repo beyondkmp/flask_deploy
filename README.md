@@ -33,10 +33,12 @@
 3. 编译安装python的最新版本
 
     * 从官网下载最新的源代码并解压缩
+
         ```
         wget http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tar.xz
         tar -xvf Python-2.7.8.tar.xz
         ```
+
     * 编译安装
 
         ```
@@ -103,6 +105,8 @@ curl http://127.0.0.1:8080
 
 ### 安装最新版本的nginx
 
+#### 方法一
+
 #### 安装EPEL
 
 EPEL是Extra Packages for Enterprise Linux的简称。因为在默认的repository里面没有包含最新版本的nginx,安装EPEL后可以确保Centos上的nginx保持的最新版本。
@@ -111,6 +115,17 @@ EPEL是Extra Packages for Enterprise Linux的简称。因为在默认的reposito
 
 ```
 sudo yum install epel-release
+```
+#### 方法二
+
+设置repo,新建/etc/yum.repos.d/nginx.repo,在此文件中添加如下内容:
+
+```
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=0
+enabled=1
 ```
 
 #### 安装nginx
@@ -197,3 +212,4 @@ service nginx restart
 6. [阿里云部署 Flask + WSGI + Nginx 详解](http://www.cnblogs.com/Ray-liang/p/4173923.html)
 7. [audit2why](https://screamingadmin.wordpress.com/2012/08/20/audit2why/)
 8. [SELinux policy for nginx and GitLab unix socket in Fedora 19](http://axilleas.me/en/blog/2013/selinux-policy-for-nginx-and-gitlab-unix-socket-in-fedora-19/)
+9. [nginx install官网](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#)
