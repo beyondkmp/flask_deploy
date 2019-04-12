@@ -35,7 +35,7 @@
 
 为了统一管理，在python的虚拟环境下安装使用uwsgi,不使用全局的uwsgi
 
-```
+```bash
 mkdir -p /var/www/flask_api
 cd /var/www/flask_api
 python -m venv venv
